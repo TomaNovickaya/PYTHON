@@ -1,0 +1,21 @@
+# Задача 26:  Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
+
+# *Пример:*
+
+# A = 3; B = 5 -> 243 (3⁵)
+#     A = 2; B = 3 -> 8 
+ 
+def nums(a,b):
+    if b == 1:
+        return a
+    elif b % 2 == 0:
+        res = nums(a, b // 2)
+        return res * res
+    else:
+        res = nums(a, b // 2)
+        return res * res * a
+    
+a = int(input('Введите А:'))
+b = int(input('Введите В:'))
+
+print(nums(a,b))
