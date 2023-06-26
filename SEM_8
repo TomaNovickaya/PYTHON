@@ -1,0 +1,71 @@
+# Задача №49. Общее обсуждение
+# Создать телефонный справочник с
+# возможностью импорта и экспорта данных в
+# формате .txt. Фамилия, имя, отчество, номер
+# телефона - данные, которые должны находиться
+# в файле.
+# 1. Программа должна выводить данные
+# 2. Программа должна сохранять данные в
+# текстовом файле
+# 3. Пользователь может ввести одну из
+# характеристик для поиска определенной
+# записи(Например имя или фамилию
+# человека)
+# 4. Использование функций. Ваша программа
+# не должна быть линейной
+
+  
+file_path = 'Tel.txt'
+def write_lst(file_path):
+    with open (file_path, 'a', encoding='utf-8') as f:
+      f.write('\n' + input(f'введите фио и тел: ')) 
+    return f
+
+def read_lst(file_path):
+    lst = []
+    with open (file_path) as f:
+        for line in f:
+            surname, name, patronymic, phone = line.strip(). split(', ')
+            base = {'1': surname,
+              '2': name,
+              '3': patronymic,
+              '4': phone}
+            print(surname, name, patronymic, phone)
+            lst.append(base)
+    return lst
+
+
+
+a = int(input('введите 1 - для ввода,  2 - вывод, 3 - поиск, 4 - изменение, 5 - удаление \n'))
+if a == 1:
+   add = write_lst(file_path)
+elif a==2:
+    with open(file_path, 'r', encoding='utf-8') as f:
+       
+        for line in f:
+           
+            print (line.strip().split())
+    
+    print()
+elif a ==3:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        srch = str(input('Введите характеристику для поиска: \n'))
+        for line in f:
+            if srch in line:
+                print(line)
+elif a == 4:
+    with open(file_path, 'r') as f:
+       file_path = f.read()
+       new_file_path = file_path.replace(', ', ' - ')
+
+    with open ('Tel.txt', 'w') as f:
+        f.write(new_file_path)
+
+elif a == 5:
+    with open(file_path, 'r') as f:
+       file_path = f.read()
+       new_file_path = file_path.replace(', ', ' - ')
+
+    with open ('Tel.txt', 'w') as f:
+        f.write(new_file_path)            
+file_path = 'Tel.txt'
